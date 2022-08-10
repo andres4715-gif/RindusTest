@@ -16,7 +16,7 @@ public class AppiumScenario {
     }
 
     @Given("^the user opens the rindus test app$")
-    public void the_user_opens_the_rindus_test_app() {
+    public void the_user_opens_the_rindus_test_app() throws InterruptedException {
 
     }
 
