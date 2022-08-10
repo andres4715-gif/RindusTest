@@ -1,8 +1,9 @@
 package com.rindus.app;
 
-import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
+
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Unit test for simple App.
