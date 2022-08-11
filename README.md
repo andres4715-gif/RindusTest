@@ -1,5 +1,5 @@
 # Cucumber Framework
-Hi Guys, this is Chirag Singh and this repository contains all the code which I created on the You Tube Channel "FREE AUTOMATION LEARNING". You can download the code and run these code at your machine.
 
-You can subscribe my youtube channel. See the below link for youtube channel.
-https://www.youtube.com/channel/UCFs7BfAeJI6MtdqzTXdA9Og
+[How to use Wait commands in Selenium WebDriver](https://www.browserstack.com/guide/wait-commands-in-selenium-webdriver)
+
+[How to scroll down](https://www.youtube.com/watch?v=bqpi_19V8I8)

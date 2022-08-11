@@ -22,7 +22,9 @@ public class Hook {
     public void setUpAppium() throws MalformedURLException {
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel3API28");
+        cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+        cap.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
+        cap.setCapability(MobileCapabilityType.NO_RESET, true);
         cap.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "/App/rindustest.apk");
         driver = new AndroidDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"), cap);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

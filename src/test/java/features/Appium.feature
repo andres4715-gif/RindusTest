@@ -1,4 +1,7 @@
 #Author: andres4715@gmail.com
+#Date: 10/08/2022
+#Description: rindus mobile practice.
+
 Feature: Tap on an element
 
   @appium
