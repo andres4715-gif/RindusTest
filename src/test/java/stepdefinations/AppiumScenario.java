@@ -7,13 +7,10 @@ import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import utility.Hook;
-import utility.Scrolling;
 
 public class AppiumScenario {
 
@@ -24,30 +21,38 @@ public class AppiumScenario {
     }
 
     @Given("^the user opens the rindus test app$")
-    public void the_user_opens_the_rindus_test_app() {
+    public void the_user_opens_the_rindus_test_app() throws InterruptedException {
+
+        String todo = "doctor appointment";
+
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text= 'Users']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text = 'Leanne Graham']")));
+        driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text = 'Leanne Graham']")));
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).isDisplayed());
+        driver.findElement(By.xpath("(//*[@class='android.widget.CheckBox'])[1]")).click();
+        driver.findElement(By.xpath("//*[contains(@text, 'Todo')]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@resource-id='es.jaimesuarez.rindustest:id/fab_add_item']")));
+        driver.findElement(By.xpath("//*[@resource-id='es.jaimesuarez.rindustest:id/fab_add_item']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text='CREATE']")));
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@text='CREATE']")).isEnabled());
+
+        driver.findElement(By.xpath("//*[@text='Type your todo here…']")).clear();
+        driver.findElement(By.xpath("//*[@text='Type your todo here…']")).sendKeys(todo);
+        driver.findElement(By.xpath("//*[@text='CREATE']")).click();
+        String data =driver.findElement(By.xpath("(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]")).getText();
+        Assert.assertTrue(data.equals(todo));
+        boolean checkCheck =driver.findElement(By.xpath("(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]")).isSelected();
+        Assert.assertFalse(checkCheck);
+        driver.findElement(By.xpath("(//*[@class='android.widget.CheckBox'])[1]")).click();
+        Thread.sleep(2000);
 
     }
 
     @When("^the user taps over the first user$")
-    public void the_user_taps_over_the_first_user() throws InterruptedException {
+    public void the_user_taps_over_the_first_user() {
 
-        String data = driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).getText();
-        boolean checkStautus = driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).isDisplayed();
-        System.out.println("The element is displayed: " + checkStautus);
-        System.out.println("the data is: " + data);
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).isDisplayed());
-        driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).click();
-        String userName = driver.findElement(By.id("es.jaimesuarez.rindustest:id/tv_userDetail_name")).getText();
-        System.out.println("El nombre en la segunda pantalla es: " + userName);
-        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("es.jaimesuarez.rindustest:id/tv_userDetail_name")));
-        driver.findElement(By.xpath("(//*[@text='See more'])[2]")).click();
-        Thread.sleep(1000);
-        Scrolling scrolling = new Scrolling(driver);
-        scrolling.scrollUp();
-        scrolling.scrollDown();
-        Thread.sleep(1000);
     }
 
     @Then("^the user can see the user details page$")
