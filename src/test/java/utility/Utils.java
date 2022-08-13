@@ -15,6 +15,10 @@ public class Utils {
         this.driver = driver;
     }
 
+    /**
+     * method to wait for any label on the current screen when the xpath element have text
+     * @param label
+     */
     public void waitLabelWithText(String label) {
         String baseSelector = "//*[@text=";
         String dataLabel = "'" + label + "']";
@@ -23,6 +27,10 @@ public class Utils {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(baseSelectorAndDataLabel)));
     }
 
+    /**
+     * method to wait for any label on the current screen when the xpath element have resource-id
+     * @param labelResourceId
+     */
     public void waitLabelWithresource_id(String labelResourceId) {
         String baseSelectorId = "//*[@resource-id=";
         String dataLabelId = "'" + labelResourceId + "']";

@@ -1,7 +1,10 @@
 package pages;
 
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.List;
 
 public class Todo_s {
 
@@ -13,6 +16,7 @@ public class Todo_s {
     private String newRecordAdded = "(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]";
     private String newTaskAdded = "(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]";
     private String selectNewTask = "(//*[@class='android.widget.CheckBox'])[1]";
+    private String task = "//*[@resource-id= 'es.jaimesuarez.rindustest:id/tv_todo_title']";
 
     // Constructor
     public Todo_s(WebDriver driver) {
@@ -47,5 +51,17 @@ public class Todo_s {
 
     public void tapsToMarkNewTaskAdded() {
         driver.findElement(By.xpath(selectNewTask)).click();
+    }
+
+    public int getCoordenatesIn_x(int dataToBeRemoved) {
+        List<MobileElement> list = driver.findElements(By.xpath(task));
+        int coordenatesIn_x = list.get(dataToBeRemoved - 1).getLocation().getX();
+        return coordenatesIn_x;
+    }
+
+    public int getCoordenatesIn_y(int dataToBeRemoved) {
+        List<MobileElement> list = driver.findElements(By.xpath(task));
+        int coordenatesIn_y = list.get(dataToBeRemoved - 1).getLocation().getY();
+        return coordenatesIn_y;
     }
 }

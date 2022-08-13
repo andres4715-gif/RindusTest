@@ -12,6 +12,7 @@ import pages.Todo_s;
 import pages.UserDetails;
 import pages.Users;
 import utility.Hook;
+import utility.TouchActions;
 import utility.Utils;
 
 public class AppiumScenario {
@@ -23,6 +24,9 @@ public class AppiumScenario {
     }
 
     String newDataRecord = "doctor appointment";
+
+    int Xcoordinates;
+    int Ycoordinates;
 
     @Given("^the user opens the rindus test app$")
     public void the_user_opens_the_rindus_test_app() {
@@ -69,7 +73,12 @@ public class AppiumScenario {
 
     @Then("^he can delete the new task added$")
     public void he_can_delete_the_new_task_added() throws InterruptedException {
+        int elementToBeRemoved = 1;
+        Todo_s todos = new Todo_s(driver);
+        TouchActions touchActions = new TouchActions(driver);
+        Xcoordinates = todos.getCoordenatesIn_x(elementToBeRemoved);
+        Ycoordinates = todos.getCoordenatesIn_y(elementToBeRemoved);
+        touchActions.swipeAction(Xcoordinates, Ycoordinates, "Right");
         Thread.sleep(2000);
-
     }
 }
