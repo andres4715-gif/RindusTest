@@ -25,21 +25,35 @@ public class AppiumScenario {
     String newDataRecord = "doctor appointment";
 
     @Given("^the user opens the rindus test app$")
-    public void the_user_opens_the_rindus_test_app() throws InterruptedException {
-
+    public void the_user_opens_the_rindus_test_app() {
         Utils utils = new Utils(driver);
-        Users users = new Users(driver);
-        UserDetails userDetails = new UserDetails(driver);
-        Todo_s todos = new Todo_s(driver);
-
         utils.waitLabelWithText("Users");
         utils.waitLabelWithText("Leanne Graham");
+    }
+
+    @When("^the user taps over the first user$")
+    public void the_user_taps_over_the_first_user() {
+        Users users = new Users(driver);
         users.tapOverUserElement();
+    }
+
+    @When("^he adds a new task to do$")
+    public void he_adds_a_new_task_to_do() {
+        Utils utils = new Utils(driver);
+        UserDetails userDetails = new UserDetails(driver);
+
         utils.waitLabelWithText("Leanne Graham");
         Assert.assertTrue(driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).isDisplayed());
         userDetails.tappingToChooseAnyOption();
         userDetails.tapOverSeeMore();
         utils.waitLabelWithresource_id("es.jaimesuarez.rindustest:id/fab_add_item");
+    }
+
+    @Then("^the user can see the the new task added$")
+    public void the_user_can_see_the_the_new_task_added() {
+        Utils utils = new Utils(driver);
+        Todo_s todos = new Todo_s(driver);
+
         todos.tapOverTheAddButton();
         utils.waitLabelWithText("CREATE");
         Assert.assertTrue(driver.findElement(By.xpath("//*[@text='CREATE']")).isEnabled());
@@ -51,22 +65,11 @@ public class AppiumScenario {
         boolean checkCheck = todos.checkNewTaskAddedIsSelected();
         Assert.assertFalse(checkCheck);
         todos.tapsToMarkNewTaskAdded();
+    }
+
+    @Then("^he can delete the new task added$")
+    public void he_can_delete_the_new_task_added() throws InterruptedException {
         Thread.sleep(2000);
-
-    }
-
-    @When("^the user taps over the first user$")
-    public void the_user_taps_over_the_first_user() {
-
-    }
-
-    @Then("^the user can see the user details page$")
-    public void the_user_can_see_the_user_details_page() {
-
-    }
-
-    @Then("^he can see his name$")
-    public void he_can_see_his_name() {
 
     }
 }

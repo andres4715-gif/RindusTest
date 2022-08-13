@@ -5,7 +5,7 @@
 [How to scroll down and scroll up](https://www.youtube.com/watch?v=bqpi_19V8I8)
 [How to scroll left and scroll right](https://www.youtube.com/watch?v=FzLF2vFBRj4)
 
-Capabilities to appium inspector; 
+Capabilities to apply on Appium inspector; 
 
 ```json
 {
