@@ -10,7 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import pages.HomePage;
 import utility.Hook;
+import utility.Utils;
 
 public class AppiumScenario {
 
@@ -22,14 +24,19 @@ public class AppiumScenario {
 
     @Given("^the user opens the rindus test app$")
     public void the_user_opens_the_rindus_test_app() throws InterruptedException {
-
         String todo = "doctor appointment";
 
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text= 'Users']")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text = 'Leanne Graham']")));
-        driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text = 'Leanne Graham']")));
+        Utils utils = new Utils(driver);
+        HomePage homePage = new HomePage(driver);
+
+        WebDriverWait wait = new WebDriverWait(driver, 30); // TODO Cuando se quiten todos los wait se puede quitar esta.
+
+        utils.waitLabelWithText("Users");
+        utils.waitLabelWithText("Leanne Graham");
+        homePage.tapOverUserElement();
+
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text= 'Leanne Graham']")));
         Assert.assertTrue(driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).isDisplayed());
         driver.findElement(By.xpath("(//*[@class='android.widget.CheckBox'])[1]")).click();
         driver.findElement(By.xpath("//*[contains(@text, 'Todo')]")).click();
