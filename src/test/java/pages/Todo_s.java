@@ -11,6 +11,8 @@ public class Todo_s {
     private String dataFillInformation = "//*[@text='Type your todo here…']";
     private String createButton = "//*[@text='CREATE']";
     private String newRecordAdded = "(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]";
+    private String newTaskAdded = "(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]";
+    private String selectNewTask = "(//*[@class='android.widget.CheckBox'])[1]";
 
     // Constructor
     public Todo_s(WebDriver driver) {
@@ -36,5 +38,14 @@ public class Todo_s {
     public String getNewDataAdded() {
         String gettingData = driver.findElement(By.xpath(newRecordAdded)).getText();
         return gettingData;
+    }
+
+    public boolean checkNewTaskAddedIsSelected() {
+        boolean newTaskSelected = driver.findElement(By.xpath(newTaskAdded)).isSelected();
+        return newTaskSelected;
+    }
+
+    public void tapsToMarkNewTaskAdded() {
+        driver.findElement(By.xpath(selectNewTask)).click();
     }
 }

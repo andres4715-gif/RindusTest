@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.Todo_s;
 import pages.UserDetails;
@@ -49,10 +48,9 @@ public class AppiumScenario {
         todos.tapOverCreateButton();
         String data = todos.getNewDataAdded();
         Assert.assertTrue(data.equals(newDataRecord));
-
-        boolean checkCheck = driver.findElement(By.xpath("(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]")).isSelected();
+        boolean checkCheck = todos.checkNewTaskAddedIsSelected();
         Assert.assertFalse(checkCheck);
-        driver.findElement(By.xpath("(//*[@class='android.widget.CheckBox'])[1]")).click();
+        todos.tapsToMarkNewTaskAdded();
         Thread.sleep(2000);
 
     }
