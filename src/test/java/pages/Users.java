@@ -4,14 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
-public class HomePage {
+public class Users {
 
     protected WebDriver driver;
 
     private String userElement = "//*[@text = 'Leanne Graham']";
 
     // Constructor
-    public HomePage(WebDriver driver) {
+    public Users(WebDriver driver) {
         this.driver = driver;
     }
 

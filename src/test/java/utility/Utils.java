@@ -22,4 +22,12 @@ public class Utils {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(baseSelectorAndDataLabel)));
     }
+
+    public void waitLabelWithresource_id(String labelResourceId) {
+        String baseSelectorId = "//*[@resource-id=";
+        String dataLabelId = "'" + labelResourceId + "']";
+        String baseSelectorAndDataLabelId = baseSelectorId + dataLabelId;
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(baseSelectorAndDataLabelId)));
+    }
 }

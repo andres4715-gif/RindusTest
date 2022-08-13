@@ -8,9 +8,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import pages.HomePage;
+import pages.Todo_s;
+import pages.UserDetails;
+import pages.Users;
 import utility.Hook;
 import utility.Utils;
 
@@ -22,35 +23,34 @@ public class AppiumScenario {
         this.driver = Hook.getDriver();
     }
 
+    String newDataRecord = "doctor appointment";
+
     @Given("^the user opens the rindus test app$")
     public void the_user_opens_the_rindus_test_app() throws InterruptedException {
-        String todo = "doctor appointment";
 
         Utils utils = new Utils(driver);
-        HomePage homePage = new HomePage(driver);
-
-        WebDriverWait wait = new WebDriverWait(driver, 30); // TODO Cuando se quiten todos los wait se puede quitar esta.
+        Users users = new Users(driver);
+        UserDetails userDetails = new UserDetails(driver);
+        Todo_s todos = new Todo_s(driver);
 
         utils.waitLabelWithText("Users");
         utils.waitLabelWithText("Leanne Graham");
-        homePage.tapOverUserElement();
-
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text= 'Leanne Graham']")));
+        users.tapOverUserElement();
+        utils.waitLabelWithText("Leanne Graham");
         Assert.assertTrue(driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).isDisplayed());
-        driver.findElement(By.xpath("(//*[@class='android.widget.CheckBox'])[1]")).click();
-        driver.findElement(By.xpath("//*[contains(@text, 'Todo')]")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@resource-id='es.jaimesuarez.rindustest:id/fab_add_item']")));
-        driver.findElement(By.xpath("//*[@resource-id='es.jaimesuarez.rindustest:id/fab_add_item']")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@text='CREATE']")));
+        userDetails.tappingToChooseAnyOption();
+        userDetails.tapOverSeeMore();
+        utils.waitLabelWithresource_id("es.jaimesuarez.rindustest:id/fab_add_item");
+        todos.tapOverTheAddButton();
+        utils.waitLabelWithText("CREATE");
         Assert.assertTrue(driver.findElement(By.xpath("//*[@text='CREATE']")).isEnabled());
+        todos.clearDataFillInformation();
+        todos.inputNewRecord(newDataRecord);
+        todos.tapOverCreateButton();
+        String data = todos.getNewDataAdded();
+        Assert.assertTrue(data.equals(newDataRecord));
 
-        driver.findElement(By.xpath("//*[@text='Type your todo here…']")).clear();
-        driver.findElement(By.xpath("//*[@text='Type your todo here…']")).sendKeys(todo);
-        driver.findElement(By.xpath("//*[@text='CREATE']")).click();
-        String data =driver.findElement(By.xpath("(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]")).getText();
-        Assert.assertTrue(data.equals(todo));
-        boolean checkCheck =driver.findElement(By.xpath("(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]")).isSelected();
+        boolean checkCheck = driver.findElement(By.xpath("(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]")).isSelected();
         Assert.assertFalse(checkCheck);
         driver.findElement(By.xpath("(//*[@class='android.widget.CheckBox'])[1]")).click();
         Thread.sleep(2000);
