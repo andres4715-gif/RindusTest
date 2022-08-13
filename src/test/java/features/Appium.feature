@@ -11,4 +11,5 @@ Feature: Add and delete an element
     And he adds a new task to do
     Then the user can see the the new task added
     And he can delete the new task added
+    And he return to the Users Page
 

@@ -17,6 +17,7 @@ public class Todo_s {
     private String newTaskAdded = "(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]";
     private String selectNewTask = "(//*[@class='android.widget.CheckBox'])[1]";
     private String task = "//*[@resource-id= 'es.jaimesuarez.rindustest:id/tv_todo_title']";
+    private String backButton = "//*[@content-desc= 'Navigate up']";
 
     // Constructor
     public Todo_s(WebDriver driver) {
@@ -63,5 +64,14 @@ public class Todo_s {
         List<MobileElement> list = driver.findElements(By.xpath(task));
         int coordenatesIn_y = list.get(dataToBeRemoved - 1).getLocation().getY();
         return coordenatesIn_y;
+    }
+
+    public boolean checkIfDeleteTaskMessage() {
+        boolean deleteTaskDisplayed = driver.findElement(By.xpath(newTaskAdded)).isDisplayed();
+        return deleteTaskDisplayed;
+    }
+
+    public void tapOverTheBackButton() {
+        driver.findElement(By.xpath(backButton)).click();
     }
 }

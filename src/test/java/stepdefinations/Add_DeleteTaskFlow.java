@@ -15,11 +15,11 @@ import utility.Hook;
 import utility.TouchActions;
 import utility.Utils;
 
-public class AppiumScenario {
+public class Add_DeleteTaskFlow {
 
     private WebDriver driver;
 
-    public AppiumScenario() {
+    public Add_DeleteTaskFlow() {
         this.driver = Hook.getDriver();
     }
 
@@ -72,13 +72,34 @@ public class AppiumScenario {
     }
 
     @Then("^he can delete the new task added$")
-    public void he_can_delete_the_new_task_added() throws InterruptedException {
+    public void he_can_delete_the_new_task_added() {
         int elementToBeRemoved = 1;
+
         Todo_s todos = new Todo_s(driver);
+        Utils utils = new Utils(driver);
+
         TouchActions touchActions = new TouchActions(driver);
         Xcoordinates = todos.getCoordenatesIn_x(elementToBeRemoved);
         Ycoordinates = todos.getCoordenatesIn_y(elementToBeRemoved);
         touchActions.swipeAction(Xcoordinates, Ycoordinates, "Right");
+        utils.waitLabelWithText("Todo deleted successfully");
+        boolean deleteMessage = todos.checkIfDeleteTaskMessage();
+        Assert.assertTrue(deleteMessage);
+
+    }
+
+    @Then("^he return to the Users Page$")
+    public void he_return_to_the_Users_Page() throws InterruptedException {
+        Utils utils = new Utils(driver);
+        UserDetails userDetails = new UserDetails(driver);
+        Users users = new Users(driver);
+        Todo_s todos = new Todo_s(driver);
+
+        todos.tapOverTheBackButton();
+        userDetails.tapOverTheBackButton();
+        utils.waitLabelWithText("Users");
+        boolean checkUserLabel = users.checkUserLabel();
+        Assert.assertTrue(checkUserLabel);
         Thread.sleep(2000);
     }
 }

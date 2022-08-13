@@ -10,6 +10,7 @@ public class UserDetails {
 
     private String todosElement = "(//*[@class='android.widget.CheckBox'])[1]";
     private String todoCta = "//*[contains(@text, 'Todo')]";
+    private String backButton = "//*[@content-desc= 'Navigate up']";
 
     // Constructor
     public UserDetails(WebDriver driver) {
@@ -22,5 +23,9 @@ public class UserDetails {
 
     public void tapOverSeeMore() {
         driver.findElement(By.xpath(todoCta)).click();
+    }
+
+    public void tapOverTheBackButton() {
+        driver.findElement(By.xpath(backButton)).click();
     }
 }
