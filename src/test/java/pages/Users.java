@@ -17,7 +17,6 @@ public class Users {
 
     public boolean checkUserLabel() {
         boolean userLabel = driver.findElement(By.xpath(usersLabel)).isDisplayed();
-        System.out.println("user label is preset: " + userLabel);
         return userLabel;
     }
 }

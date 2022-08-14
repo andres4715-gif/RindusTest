@@ -75,7 +75,7 @@ Example:
   "platformName": "Android",
   "appium:platformVersion": "9",
   "appium:deviceName": "Pixel3API28",
-  "appium:automationName": "UiAutomation2",
+  "appium:automationName": "UiAutomator2",
   "appium:app": "/Users/andresrios/Desktop/RindusTest/App/rindustest.apk"
 }
 ```

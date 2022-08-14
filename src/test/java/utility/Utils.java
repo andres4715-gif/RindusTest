@@ -67,7 +67,22 @@ public class Utils {
     }
 
     /**
+     * Method to get the value text for any label
+     *
+     * @param label
+     * @return
+     */
+    public String getLabelValueFromInputText(String label) {
+        String baseSelector = "//*[@text=";
+        String dataLabel = "'" + label + "']";
+        String baseSelectorAndDataLabel = baseSelector + dataLabel;
+        String dataResult = driver.findElement(By.xpath(baseSelectorAndDataLabel)).getText();
+        return dataResult;
+    }
+
+    /**
      * it is for testing purposes in order to see with more time any action
+     *
      * @throws InterruptedException
      */
     public void waitShortTimeToSeeAnyAction(int seconds) throws InterruptedException {

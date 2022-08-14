@@ -4,6 +4,7 @@
 	<test name="Window">
 		<classes>
 			<class name="runner.RunTest"></class>
+			<class name="runner.CheckPost"></class>
 		</classes>
 	</test>
 </suite>
