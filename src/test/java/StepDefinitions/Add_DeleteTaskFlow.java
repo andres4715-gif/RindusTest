@@ -38,8 +38,8 @@ public class Add_DeleteTaskFlow {
         utils.waitLabelWithText("Leanne Graham");
     }
 
-    @When("^the user taps over a user$")
-    public void the_user_taps_over_a_user() {
+    @When("^the user taps over the first user$")
+    public void the_user_taps_over_the_first_user() {
         Utils utils = new Utils(driver);
         utils.tapOverAnyElementWithText(userNameToSelectOfTheList);
     }
