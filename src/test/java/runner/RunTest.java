@@ -6,7 +6,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
 		features={"src/test/java/features"}
-		,glue={"stepdefinations", "utility"}
+		,glue={"StepDefinitions", "utility"}
 		, dryRun = false
 		, plugin = {"pretty", "html:target/HTMLReports/report.html"}
 		, tags ={"@appium"}

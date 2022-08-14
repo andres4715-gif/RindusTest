@@ -56,7 +56,7 @@ To check if everything is okay write on the local terminal this piece of code:
 
 `$ adb devices`
 
-The output should be something similar
+You should see something like the following:
 
 ```shell
 adb devices
