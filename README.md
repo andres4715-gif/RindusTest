@@ -48,6 +48,22 @@ It is possible to clone the repositorio just visiting the github page and clone 
 4. Appium inspector
 5. Android Studio
 
+### Keep in mind:
+
+To execute the automation script you must be created an VDM (Virtual Device Manager) device in Android Studio and the SDK manager with the correct path on the environment variables.
+
+To check if everything is okay write on the local terminal this piece of code:
+
+`$ adb devices`
+
+The output should be something similar
+
+```shell
+adb devices
+List of devices attached
+emulator-5554   device
+```
+
 ------------
 
 ## For Appium Inspector you will need this capabilities
