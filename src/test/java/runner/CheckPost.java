@@ -1,11 +1,11 @@
 package runner;
 
-import org.testng.annotations.Test;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.testng.annotations.Test;
 
 @CucumberOptions(
-		features={"src/test/java/features/AddAndDeleteTask.feature"}
+		features={"src/test/java/features/CheckPosts.feature"}
 		,glue={"StepDefinitions", "utility"}
 		, dryRun = false
 		, monochrome = false
@@ -13,6 +13,6 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 		, tags ={"@appium"}
 		)
 @Test
-public class RunTest extends AbstractTestNGCucumberTests{
+public class CheckPost extends AbstractTestNGCucumberTests{
 
 }

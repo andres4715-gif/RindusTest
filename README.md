@@ -56,7 +56,7 @@ To check if everything is okay write on the local terminal this piece of code:
 
 `$ adb devices`
 
-The output should be something similar
+You should see something like the following:
 
 ```shell
 adb devices
@@ -75,7 +75,7 @@ Example:
   "platformName": "Android",
   "appium:platformVersion": "9",
   "appium:deviceName": "Pixel3API28",
-  "appium:automationName": "UiAutomation2",
+  "appium:automationName": "UiAutomator2",
   "appium:app": "/Users/andresrios/Desktop/RindusTest/App/rindustest.apk"
 }
 ```

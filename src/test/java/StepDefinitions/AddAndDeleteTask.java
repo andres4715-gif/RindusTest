@@ -1,4 +1,4 @@
-package stepdefinations;
+package StepDefinitions;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,11 +15,11 @@ import utility.Hook;
 import utility.TouchActions;
 import utility.Utils;
 
-public class Add_DeleteTaskFlow {
+public class AddAndDeleteTask {
 
     private WebDriver driver;
 
-    public Add_DeleteTaskFlow() {
+    public AddAndDeleteTask() {
         this.driver = Hook.getDriver();
     }
 
@@ -38,8 +38,8 @@ public class Add_DeleteTaskFlow {
         utils.waitLabelWithText("Leanne Graham");
     }
 
-    @When("^the user taps over the first user$")
-    public void the_user_taps_over_the_first_user() {
+    @When("^the user taps over an user$")
+    public void the_user_taps_over_an_user() {
         Utils utils = new Utils(driver);
         utils.tapOverAnyElementWithText(userNameToSelectOfTheList);
     }
