@@ -1,10 +1,15 @@
 #Author: andres4715@gmail.com
-Feature: Tap on an element
+#Date: 10/08/2022
+#Description: rindus mobile practice.
+
+Feature: Add and delete an element
 
   @appium
-  Scenario: Check if is possible to tap over an element
+  Scenario: Navigate through the app adding a new task and delete it
     Given the user opens the rindus test app
     When the user taps over the first user
-    Then the user can see the user details page
-    And he can see his name
+    And he adds a new task to do
+    Then the user can see the the new task added
+    And he can delete the new task added
+    And he return to the Users Page
 
