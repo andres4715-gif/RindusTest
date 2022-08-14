@@ -56,7 +56,8 @@ public class TouchActions {
     }
 
     /**
-     * method to left and right swipe on the screen based on coordinates
+     * method to left and right swipe on the screen based on coordinates and direction could be Left or Right
+     *
      * @param Xcoordinate
      * @param Ycoordinate
      * @param direction
@@ -72,10 +73,10 @@ public class TouchActions {
             case "Left":
                 System.out.println("Swipe Right to Left");
                 //define starting and ending X and Y coordinates
-                int startX=deviceWidth - Xcoordinate;
-                int startY=Ycoordinate; // (int) (height * 0.2);
-                int endX=Xcoordinate;
-                int endY=Ycoordinate;
+                int startX = deviceWidth - Xcoordinate;
+                int startY = Ycoordinate; // (int) (height * 0.2);
+                int endX = Xcoordinate;
+                int endY = Ycoordinate;
                 //perform swipe from right to left
                 new TouchAction((AppiumDriver) driver).longPress(PointOption.point(startX, startY)).moveTo(PointOption.point(endX, endY)).release().perform();
                 break;
@@ -83,10 +84,10 @@ public class TouchActions {
             case "Right":
                 System.out.println("Swipe Left to Right");
                 //define starting X and Y coordinates
-                startX=Xcoordinate;
-                startY=Ycoordinate;
-                endX=deviceWidth - Xcoordinate;
-                endY=Ycoordinate;
+                startX = Xcoordinate;
+                startY = Ycoordinate;
+                endX = deviceWidth - Xcoordinate;
+                endY = Ycoordinate;
                 //perform swipe from left to right
                 new TouchAction((AppiumDriver) driver).longPress(PointOption.point(startX, startY)).moveTo(PointOption.point(endX, endY)).release().perform();
                 break;
