@@ -8,6 +8,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 		features={"src/test/java/features"}
 		,glue={"StepDefinitions", "utility"}
 		, dryRun = false
+		, monochrome = false
 		, plugin = {"pretty", "html:target/HTMLReports/report.html"}
 		, tags ={"@appium"}
 		)
