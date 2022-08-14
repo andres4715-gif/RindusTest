@@ -7,7 +7,7 @@ Feature: Add and delete an element
   @appium
   Scenario: Navigate through the app adding a new task and delete it
     Given the user opens the rindus test app
-    When the user taps over the first user
+    When the user taps over an user
     And he adds a new task to do
     Then the user can see the the new task added
     And he can delete the new task added
