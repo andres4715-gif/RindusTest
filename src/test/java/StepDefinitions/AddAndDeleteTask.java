@@ -15,11 +15,11 @@ import utility.Hook;
 import utility.TouchActions;
 import utility.Utils;
 
-public class Add_DeleteTaskFlow {
+public class AddAndDeleteTask {
 
     private WebDriver driver;
 
-    public Add_DeleteTaskFlow() {
+    public AddAndDeleteTask() {
         this.driver = Hook.getDriver();
     }
 
