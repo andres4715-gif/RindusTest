@@ -8,16 +8,11 @@ public class Users {
 
     protected WebDriver driver;
 
-    private String userElement = "//*[@text = 'Leanne Graham']";
     private String usersLabel = "//*[@text='Users']";
 
     // Constructor
     public Users(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public void tapOverUserElement() {
-        driver.findElement(By.xpath(userElement)).click();
     }
 
     public boolean checkUserLabel() {

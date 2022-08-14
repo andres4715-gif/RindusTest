@@ -24,6 +24,8 @@ public class Add_DeleteTaskFlow {
     }
 
     String newDataRecord = "doctor appointment";
+    String userNameToSelectOfTheList = "Ervin Howell";
+    String labelToAddNewTask = "CREATE";
 
     int Xcoordinates;
     int Ycoordinates;
@@ -37,8 +39,8 @@ public class Add_DeleteTaskFlow {
 
     @When("^the user taps over the first user$")
     public void the_user_taps_over_the_first_user() {
-        Users users = new Users(driver);
-        users.tapOverUserElement();
+        Utils utils = new Utils(driver);
+        utils.tapOverAnyElementWithText(userNameToSelectOfTheList);
     }
 
     @When("^he adds a new task to do$")
@@ -46,8 +48,8 @@ public class Add_DeleteTaskFlow {
         Utils utils = new Utils(driver);
         UserDetails userDetails = new UserDetails(driver);
 
-        utils.waitLabelWithText("Leanne Graham");
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@text = 'Leanne Graham']")).isDisplayed());
+        utils.waitLabelWithText(userNameToSelectOfTheList);
+        Assert.assertTrue(driver.findElement(By.xpath(utils.getElementFromInputText(userNameToSelectOfTheList))).isDisplayed());
         userDetails.tappingToChooseAnyOption();
         userDetails.tapOverSeeMore();
         utils.waitLabelWithresource_id("es.jaimesuarez.rindustest:id/fab_add_item");
@@ -59,8 +61,8 @@ public class Add_DeleteTaskFlow {
         Todo_s todos = new Todo_s(driver);
 
         todos.tapOverTheAddButton();
-        utils.waitLabelWithText("CREATE");
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@text='CREATE']")).isEnabled());
+        utils.waitLabelWithText(labelToAddNewTask);
+        Assert.assertTrue(driver.findElement(By.xpath(utils.getElementFromInputText(labelToAddNewTask))).isEnabled());
         todos.clearDataFillInformation();
         todos.inputNewRecord(newDataRecord);
         todos.tapOverCreateButton();
@@ -100,6 +102,6 @@ public class Add_DeleteTaskFlow {
         utils.waitLabelWithText("Users");
         boolean checkUserLabel = users.checkUserLabel();
         Assert.assertTrue(checkUserLabel);
-        Thread.sleep(2000);
+        utils.waitShortTimeToSeeAnyAction(2);
     }
 }

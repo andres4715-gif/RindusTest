@@ -17,6 +17,7 @@ public class Utils {
 
     /**
      * method to wait for any label on the current screen when the xpath element have text
+     *
      * @param label
      */
     public void waitLabelWithText(String label) {
@@ -29,6 +30,7 @@ public class Utils {
 
     /**
      * method to wait for any label on the current screen when the xpath element have resource-id
+     *
      * @param labelResourceId
      */
     public void waitLabelWithresource_id(String labelResourceId) {
@@ -37,5 +39,38 @@ public class Utils {
         String baseSelectorAndDataLabelId = baseSelectorId + dataLabelId;
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(baseSelectorAndDataLabelId)));
+    }
+
+    /**
+     * method to tap over any element when it has a xpath with text
+     *
+     * @param label
+     */
+    public void tapOverAnyElementWithText(String label) {
+        String baseSelector = "//*[@text=";
+        String dataLabel = "'" + label + "']";
+        String baseSelectorAndDataLabel = baseSelector + dataLabel;
+        driver.findElement(By.xpath(baseSelectorAndDataLabel)).click();
+    }
+
+    /**
+     * method to get a string from text to use this en assertions when the xpath has a text
+     *
+     * @param label
+     * @return
+     */
+    public String getElementFromInputText(String label) {
+        String baseSelector = "//*[@text=";
+        String dataLabel = "'" + label + "']";
+        String baseSelectorAndDataLabel = baseSelector + dataLabel;
+        return baseSelectorAndDataLabel;
+    }
+
+    /**
+     * it is for testing purposes in order to see with more time any action
+     * @throws InterruptedException
+     */
+    public void waitShortTimeToSeeAnyAction(int seconds) throws InterruptedException {
+        Thread.sleep(seconds * 1000);
     }
 }
