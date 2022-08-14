@@ -26,6 +26,7 @@ public class Add_DeleteTaskFlow {
     String newDataRecord = "doctor appointment";
     String userNameToSelectOfTheList = "Ervin Howell";
     String labelToAddNewTask = "CREATE";
+    String resourceId = "es.jaimesuarez.rindustest:id/fab_add_item";
 
     int Xcoordinates;
     int Ycoordinates;
@@ -52,7 +53,7 @@ public class Add_DeleteTaskFlow {
         Assert.assertTrue(driver.findElement(By.xpath(utils.getElementFromInputText(userNameToSelectOfTheList))).isDisplayed());
         userDetails.tappingToChooseAnyOption();
         userDetails.tapOverSeeMore();
-        utils.waitLabelWithresource_id("es.jaimesuarez.rindustest:id/fab_add_item");
+        utils.waitLabelWithresource_id(resourceId);
     }
 
     @Then("^the user can see the the new task added$")
