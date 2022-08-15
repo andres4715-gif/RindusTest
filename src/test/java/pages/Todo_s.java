@@ -16,6 +16,7 @@ public class Todo_s {
     private String newRecordAdded = "(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]";
     private String newTaskAdded = "(//*[@resource-id='es.jaimesuarez.rindustest:id/tv_todo_title'])[1]";
     private String selectNewTask = "(//*[@class='android.widget.CheckBox'])[1]";
+    private String unSelectNewTask = "(//*[@class='android.widget.CheckBox'])[2]";
     private String task = "//*[@resource-id= 'es.jaimesuarez.rindustest:id/tv_todo_title']";
     private String backButton = "//*[@content-desc= 'Navigate up']";
 
@@ -52,6 +53,10 @@ public class Todo_s {
 
     public void tapsToMarkNewTaskAdded() {
         driver.findElement(By.xpath(selectNewTask)).click();
+    }
+
+    public void tapsToUnselectTaskAdded() {
+        driver.findElement(By.xpath(unSelectNewTask)).click();
     }
 
     public int getCoordenatesIn_x(int dataToBeRemoved) {

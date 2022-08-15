@@ -105,4 +105,11 @@ public class AddAndDeleteTask {
         Assert.assertTrue(checkUserLabel);
         utils.waitShortTimeToSeeAnyAction(2);
     }
+
+    @Then("^he unselect a default value$")
+    public void he_unselect_a_default_value() throws InterruptedException {
+        Todo_s todos = new Todo_s(driver);
+
+        todos.tapsToUnselectTaskAdded();
+    }
 }
